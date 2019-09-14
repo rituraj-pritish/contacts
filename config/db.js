@@ -14,7 +14,7 @@ const connectDB = async function() {
     console.log(chalk.green('db connected'));
   } catch (error) {
     console.log(chalk.red(error.message));
-    process.exit;
+    process.exit(1);
   }
 };
 
