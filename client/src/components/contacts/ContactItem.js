@@ -1,14 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types'
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 
+import ContactContext from '../../contexts/contact/contactContext';
+import { CLEAR_CURRENT } from '../../contexts/types';
 
-const ContactItem = ({ contact: { id, name, email, phone, type } }) => {
+const ContactItem = ({ contact }) => {
+  const contactContext = useContext(ContactContext);
+
+  const { id, name, email, phone, type } = contact;
+
+  const handleDelete = () => {
+    contactContext.deleteContact(id);
+    contactContext.clearCurrent();
+  };
+
+  const handleEdit = () => {
+    contactContext.setCurrentContact(contact);
+  };
+
   return (
     <div className='card bg-light'>
       <h3 className='text-primary text-left'>
         {name}
         {'  '}{' '}
-        <span style={{float: 'right'}}
+        <span
+          style={{ float: 'right' }}
           className={`badge ${
             type === 'professional' ? 'badge-success' : 'badge-primary'
           }`}
@@ -19,25 +35,29 @@ const ContactItem = ({ contact: { id, name, email, phone, type } }) => {
       <ul className='list'>
         {email && (
           <li>
-            <i className='fas fa-envelope-open'/> {email}
+            <i className='fas fa-envelope-open' /> {email}
           </li>
         )}
         {phone && (
           <li>
-            <i className='fas fa-phone'/> {phone}
+            <i className='fas fa-phone' /> {phone}
           </li>
         )}
       </ul>
       <p>
-        <button className='btn btn-dark btn-sm'>Edit</button>
-        <button className='btn btn-danger btn-sm'>Delete</button>
+        <button className='btn btn-dark btn-sm' onClick={handleEdit}>
+          Edit
+        </button>
+        <button className='btn btn-danger btn-sm' onClick={handleDelete}>
+          Delete
+        </button>
       </p>
     </div>
   );
 };
 
 ContactItem.prototypes = {
-  contact : PropTypes.object.isRequired,
-}
+  contact: PropTypes.object.isRequired
+};
 
 export default ContactItem;
