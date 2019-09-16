@@ -44,7 +44,7 @@ const Register = (props) => {
     } else if (password !== password2) {
       setAlert("Passwords don't match", 'danger');
     } else {
-      authContext.register({name, email, password});
+      register({name, email, password});
     }
   };
 
