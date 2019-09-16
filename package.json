@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "contact manager",
   "main": "server.js",
+  "engines": {
+    "node": "10.16.3",
+    "npm": "6.11.3"
+  },
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "dev": "concurrently \"npm run server \" \"npm start --prefix client\" "
+    "dev": "concurrently \"npm run server \" \"npm start --prefix client\" ",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "RP",
   "license": "ISC",
