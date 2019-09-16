@@ -16,6 +16,6 @@ router.post('/login', validator('login'), AuthController.login);
 //@route      GET api/auth/login
 //@desc       get user
 //@access     Private
-router.get('/current_user', auth, AuthController.current_user);
+router.get('/', auth, AuthController.current_user);
 
 module.exports = router;

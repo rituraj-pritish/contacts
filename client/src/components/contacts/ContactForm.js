@@ -15,7 +15,7 @@ const ContactForm = () => {
 
   useEffect(() => {
     if (current !== null) {
-      setContact({...current});
+      setContact({ ...current });
     } else {
       setContact({
         name: '',
@@ -34,14 +34,15 @@ const ContactForm = () => {
 
   const handleClear = () => {
     clearCurrent();
-  }
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
-    if(current === null) {
+    if (current === null) {
       addContact(contact);
     } else {
-      updateContact(contact)
+      updateContact(contact);
+      clearCurrent();
     }
     setContact({
       name: '',
@@ -52,7 +53,9 @@ const ContactForm = () => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <h2 className='text-primary'>{current ? 'Update Contact' : 'Add Contact'}</h2>
+      <h2 className='text-primary'>
+        {current ? 'Update Contact' : 'Add Contact'}
+      </h2>
       <input
         type='text'
         placeholder='Name'
@@ -94,13 +97,16 @@ const ContactForm = () => {
       <div>
         <input
           type='submit'
+          disabled={!name || (!email && !phone)}
           value={current ? 'Update Contact' : 'Add Contact'}
-          className='btn btn-primary btn-block'
+          className={`btn btn-primary btn-block ${ !name || (!email && !phone) ? 'btn-disable' : ''}`}
         />
       </div>
       {current && (
         <div>
-          <button className='btn btn-light btn-block' onClick={handleClear} >Clear</button>
+          <button className='btn btn-light btn-block' onClick={handleClear}>
+            Clear
+          </button>
         </div>
       )}
     </form>
