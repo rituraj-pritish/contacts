@@ -10,8 +10,6 @@ const connectDB = async function() {
       useFindAndModify: false,
       useUnifiedTopology: true
     });
-
-    console.log(chalk.green('db connected'));
   } catch (error) {
     console.log(chalk.red(error.message));
     process.exit(1);
