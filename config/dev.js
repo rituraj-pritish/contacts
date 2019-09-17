@@ -1,4 +1,4 @@
-const keys = {
+module.exports = {
   GOOGLE: {
     clientID:
       '192553611754-qnqgcmn7shd8vfi1hvq1engehesgd0ho.apps.googleusercontent.com',
@@ -14,4 +14,3 @@ const keys = {
   cookieKey: 'asdfqwerpoiulkjh'
 };
 
-module.exports = keys;
