@@ -2,12 +2,13 @@
 
 Contact managing application.
 
-Technologies:
-  *Frontend: **React** (using Context API and Hooks)
+* Technologies:
+
+  * Frontend: **React** (using Context API and Hooks)
   
-  *Backend: **Node, Express, MongoDB**
+  * Backend: **Node, Express, MongoDB**
   
-  *Authentication: **Token based**
+  * Authentication: **Token based**
   
   
   
