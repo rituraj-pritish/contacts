@@ -1,5 +1,5 @@
 node_modules/
-prod.js
+dev.js
 
 # testing
 /client/coverage
